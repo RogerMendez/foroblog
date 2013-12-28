@@ -1,0 +1,45 @@
+{% extends 'form.html' %}
+
+{% block slider %}
+	<h2><strong>Registro De Usuario</strong></h2>
+	
+{% endblock slider %}
+
+{% block legend %}
+	Registro de Nuevo Usuario
+{% endblock legend %}
+{% block formulario %}
+	{% for field in formemail %}
+		<div class="control-group">
+			{% if field.errors %}
+				<p>{{ field.errors }}</p>	
+			{% endif %}
+			
+			{{ field.label_tag }}
+			<div class="controls">
+				{{ field }}
+				{% if field.help_text %}
+					<p class="help-block">
+						<i class="icon-info-sign"></i> {{ field.help_text }}
+					</p>
+                {% endif %}
+			</div>
+		</div>
+	{% endfor %}
+	{% for field in formuser %}
+		<div class="control-group">
+			{% if field.errors %}
+				<p>{{ field.errors }}</p>
+			{% endif %}
+			{{ field.label_tag }}
+			<div class="controls">
+				{{ field }}
+				{% if field.help_text %}
+					<p class="help-block">
+						<i class="icon-info-sign"></i> {{ field.help_text }}
+					</p>
+                {% endif %}
+			</div>
+		</div>
+	{% endfor %}
+{% endblock formulario %}

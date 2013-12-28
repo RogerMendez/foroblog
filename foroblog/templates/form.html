@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block slider %}
+	<h2>Formulario</h2>
+{% endblock slider %}
+
+{% block cuerpo %}
+	<div class="row">
+		<div class="span1"></div>
+		<div class="span9">
+			<form method="post" action="" class="form-horizontal">{% csrf_token %}
+				<fieldset>
+					<legend>
+						{% block legend %}
+							Formulario de Registro
+						{% endblock legend %}
+					</legend>
+					{% block formulario %}
+						{% for field in formulario %}
+							<div class="control-group">
+								{{ field.error }}
+								{{ field.label_tag }}
+								<div class="controls">
+									{{ field }}
+									{% if field.help_text %}
+										<p class="help-block">
+											<i class="icon-info-sign"></i> {{ field.help_text }}
+										</p>
+		                            {% endif %}
+									
+								</div>
+							</div>
+						{% endfor %}
+					{% endblock formulario %}
+					
+					<div class="form-actions">
+						<button type="submit" class="btn btn-primary">{% block guardar %}Guardar{% endblock guardar %}</button>
+						<a href="{% block cancel %}/{% endblock cancel %}" class="btn">Cancelar</a>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<div class="span2"></div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('label').addClass('control-label');
+		});
+	</script>
+{% endblock cuerpo %}

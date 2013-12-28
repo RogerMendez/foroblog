@@ -1,0 +1,46 @@
+{# encoding:utf-8 #}
+{% extends 'form.html' %}
+
+{% block slider %}
+	<h2><strong>Registro De Usuario</strong></h2>
+	
+{% endblock slider %}
+
+{% block legend %}
+	Registro de Nuevo Articulo
+{% endblock legend %}
+{% block formulario %}
+	{% for field in formulariocontenido %}
+		<div class="control-group">
+			{% if field.errors %}
+				<p>{{ field.errors }}</p>	
+			{% endif %}
+			
+			{{ field.label_tag }}
+			<div class="controls">
+				{{ field }}
+				{% if field.help_text %}
+					<p class="help-block">
+						<i class="icon-info-sign"></i> {{ field.help_text }}
+					</p>
+                {% endif %}
+			</div>
+		</div>
+	{% endfor %}
+	{% for field in formularioarticulo %}
+		<div class="control-group">
+			{% if field.errors %}
+				<p>{{ field.errors }}</p>
+			{% endif %}
+			{{ field.label_tag }}
+			<div class="controls">
+				{{ field }}
+				{% if field.help_text %}
+					<p class="help-block">
+						<i class="icon-info-sign"></i> {{ field.help_text }}
+					</p>
+                {% endif %}
+			</div>
+		</div>
+	{% endfor %}
+{% endblock formulario %}
